@@ -62,18 +62,6 @@ export class CountriesComponent {
     this.updatePage();
   }
 
-  // search() {
-  //   // Filter countries based on the search term
-  //   if (this.searchTerm.trim() !== '') {
-  //     this.pagedCountries = this.countries?.filter(country =>
-  //       country.name.common.toLowerCase().includes(this.searchTerm.toLowerCase())
-  //     ) || [];
-  //   } else {
-  //     // If search term is empty, reset to show all countries
-  //     this.updatePage();
-  //   }
-  // }
-
   search() {
     // Filter countries based on the search term and selected region
     if (this.searchTerm.trim() !== '') {
@@ -94,9 +82,9 @@ export class CountriesComponent {
     this.selectedRegion = event.target.value;
     if (this.selectedRegion === '') {
       this.searchTerm = ''; // Reset search term
-      this.search(); // Call search method to apply filtering
+      this.search(); 
     } else {
-      this.search(); // Call search method to apply filtering
+      this.search(); 
     }
   }
 }

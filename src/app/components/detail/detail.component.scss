@@ -1,50 +1,20 @@
-// .img {
-//     max-width: 400px; /* Ensures the image does not exceed its container's width */
-//     height: 300px; /* Maintains aspect ratio */
-// }
-
-// .country-details {
-//     display: flex;
-//   }
-  
-//   .flag-section {
-//     flex: 1;
-//   }
-  
-//   .info-section {
-//     flex: 2;
-//     padding-left: 30px; /* Adjust as needed */
-//   }
-  
-//   .actions {
-//     display: flex;
-//     justify-content: flex-end;
-//     margin-top: 20px; /* Adjust as needed */
-//   }
-
-//   .close-button {
-//     margin-left: 10px; /* Adjust as needed */
-//     // background-color: #627dc7;
-//     // color: white;
-//   }
-  
 .img {
-  max-width: 100%; /* Ensures the image scales down to fit smaller screens */
-  height: auto; /* Allows the image's height to adjust proportionally */
+  max-width: 100%;
+  height: auto; 
 }
 
 .country-details {
   display: flex;
-  flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+  flex-wrap: wrap; 
 }
 
 .flag-section {
-  flex: 0 0 40%; /* Specify a fixed width for the flag section */
-  margin-right: 20px; /* Add some space between the flag and info sections */
+  flex: 0 0 40%; 
+  margin-right: 20px; 
 }
 
 .info-section {
-  flex: 1; /* Allow the info section to take up remaining space */
+  flex: 1; 
 }
 
 .actions {

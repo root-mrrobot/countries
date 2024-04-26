@@ -1,6 +1,5 @@
 <div class="search-filter-container">
   <input type="text" [(ngModel)]="searchTerm" placeholder="Search by country name" (input)="search()">
-  <!-- Placeholder dropdown -->
   <select class="filter-dropdown" (change)="onRegionChange($event)">
     <option value="" selected>Filter by Region</option> <!-- Change 'disabled' to 'selected' -->
     <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
