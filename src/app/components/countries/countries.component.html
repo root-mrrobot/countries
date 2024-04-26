@@ -1,1 +1,28 @@
-<p>countries works!</p>
+<div class="search-filter-container">
+  <input type="text" [(ngModel)]="searchTerm" placeholder="Search by country name" (input)="search()">
+  <!-- Placeholder dropdown -->
+  <select class="filter-dropdown" (change)="onRegionChange($event)">
+    <option value="" selected>Filter by Region</option> <!-- Change 'disabled' to 'selected' -->
+    <option *ngFor="let region of regions" [value]="region">{{ region }}</option>
+  </select>
+</div>
+<div *ngIf="loading" class="loading-container">
+    <mat-progress-spinner *ngIf="loading" mode="indeterminate" class="loading-spinner"></mat-progress-spinner>
+</div>
+<div class="container responsive-grid">
+    <mat-card *ngFor="let country of pagedCountries" (click)="openCountryDialog(country)">
+      <mat-card-header>
+        <img mat-card-avatar *ngIf="country.coatOfArms.svg" src="{{ country.coatOfArms.svg }}"/>
+        <mat-card-title *ngIf="country.name.common"> {{ country.name.common }}</mat-card-title>
+        <mat-card-subtitle *ngFor="let capital of country.capital">{{ capital }}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{ country.flags.svg }}" *ngIf="country.flags.svg" class="img"/>
+      <mat-card-content>
+        <p><strong>Population: </strong> {{country.population | number:'1.0'}}</p>
+        <p><strong>Region: </strong> {{country.region}}</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-paginator [length]="totalItems" [pageSizeOptions]="pageSizeOptions" 
+    (page)="onPageChange($event)" (pageSizeChange)="pageSizeChanged()">
+    </mat-paginator>
+</div>
