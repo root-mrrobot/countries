@@ -1,0 +1,18 @@
+<h1 mat-dialog-title>{{ country.name.common }}</h1>
+<div mat-dialog-content class="country-details">
+  <div class="flag-section">
+    <img mat-card-image src="{{ country.flags.svg }}" *ngIf="country.flags.svg" class="img"/>
+  </div>
+  <div class="info-section">
+    <p><strong>Population: </strong>{{ country.population | number }}</p>
+    <p><strong>Region: </strong>{{ country.region }}</p>
+    <p><strong>Sub Region: </strong>{{ country.subregion }}</p>
+    <p><strong>Capital: </strong>{{ country.capital }}</p>
+    <p><strong>Area: </strong> {{ country.area }}  km<sup>2</sup></p>
+    <p><strong>Continent: </strong>{{ country.continents }}</p>
+    <p><strong>Timezone: </strong>{{ country.timezones[0] }}</p>
+  </div>
+</div>
+<mat-dialog-actions class="actions">
+    <button mat-button class="close-button" mat-dialog-close>Close</button>
+</mat-dialog-actions>
