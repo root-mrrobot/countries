@@ -22,6 +22,8 @@ import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DetailComponent } from './components/detail/detail.component';
+import { ToastrModule } from 'ngx-toastr';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { DetailComponent } from './components/detail/detail.component';
     LandingComponent,
     CountriesComponent,
     NavComponent,
-    DetailComponent
+    DetailComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +51,8 @@ import { DetailComponent } from './components/detail/detail.component';
     MatCardModule,
     MatProgressSpinnerModule,
     MatTooltipModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     provideAnimationsAsync()
