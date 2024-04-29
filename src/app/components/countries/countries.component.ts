@@ -1,9 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { DetailComponent } from '../detail/detail.component';
 
 @Component({
   selector: 'app-countries',
@@ -17,33 +15,30 @@ export class CountriesComponent {
   pageSize: number = 12;
   totalItems: number = 0;
   loading: boolean = true;
+  loadingText: string = 'Loading data... ';
   searchTerm: string = '';
   regions: string[] = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
   selectedRegion: string = '';
+  selectedPopulationRange: string = '';
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(
     private apiService: ApiService, 
     private router: Router,
-    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
     this.apiService.getAll().subscribe((result) => {
-      this.countries = result;
+      this.countries = result.sort((a, b) => a.name.common.localeCompare(b.name.common));
       this.totalItems = this.countries ? this.countries.length : 0;
       this.updatePage();
       this.loading = false;
     });
   }
 
-  openCountryDialog(country: any): void {
-    const dialogRef = this.dialog.open(DetailComponent, {
-      width: '800px',
-      height: '500px',
-      data: { country: country }
-    });
+  openCountryDetail(code: string): void {
+    this.router.navigate(['/country', code]);
   }
 
   updatePage() {
@@ -63,21 +58,22 @@ export class CountriesComponent {
   }
 
   search() {
-    // Filter countries based on the search term and selected region
+    // Filter countries based on the search term, region, and population range
     if (this.searchTerm.trim() !== '') {
       this.pagedCountries = this.countries?.filter(country =>
         country.name.common.toLowerCase().includes(this.searchTerm.toLowerCase()) &&
-        (this.selectedRegion === '' || country.region === this.selectedRegion)
+        (this.selectedRegion === '' || country.region === this.selectedRegion) &&
+        (this.selectedPopulationRange === '' || this.filterByPopulation(country))
       ) || [];
     } else {
-      // If search term is empty, apply only the region filter
+      // If search term is empty, apply only the region and population range filter
       this.pagedCountries = this.countries?.filter(country =>
-        this.selectedRegion === '' || country.region === this.selectedRegion
+        (this.selectedRegion === '' || country.region === this.selectedRegion) &&
+        (this.selectedPopulationRange === '' || this.filterByPopulation(country))
       ) || [];
     }
   }
 
-  // Method to handle dropdown value change
   onRegionChange(event: any) {
     this.selectedRegion = event.target.value;
     if (this.selectedRegion === '') {
@@ -86,5 +82,22 @@ export class CountriesComponent {
     } else {
       this.search(); 
     }
+  }
+
+  onPopulationRangeChange(event: any) {
+    this.selectedPopulationRange = event.target.value;
+    this.search(); // Trigger search to apply new filter
+  }
+
+  filterByPopulation(country: any): boolean {
+    const population = country.population;
+    if (this.selectedPopulationRange === 'small') {
+      return population < 1000000;
+    } else if (this.selectedPopulationRange === 'medium') {
+      return population >= 1000000 && population <= 10000000;
+    } else if (this.selectedPopulationRange === 'large') {
+      return population > 10000000;
+    }
+    return true;
   }
 }
