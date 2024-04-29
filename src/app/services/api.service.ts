@@ -14,7 +14,7 @@ export class ApiService {
       tap({
         next: (_) => {
           console.log(`Get All - Success`);
-          console.log(_[0]);
+          // console.log(_[0]);
         },
         error: (err) => {
           console.error(`Get All - Failed ${err}`);
@@ -23,19 +23,16 @@ export class ApiService {
     );
   }
 
-  getCountryByName(name: string | null): Observable<any> {
-    if (!name) {
-      throw new Error('Name cannot be null');
-    }
-    const url = `${this.baseUrl}/name/${name}`;
+  public getCountryByCode(codeCca3: string): Observable<any> {
+    const url = `${this.baseUrl}/alpha/${codeCca3}`;
+    console.log(url);
     return this.http.get<any>(url).pipe(
       tap({
         next: (_) => {
-          console.log(`get country by name - Success`);
-          console.log(_);
+          console.log(`Get Country by Code cca3 - Success`);
         },
         error: (err) => {
-          console.error(`get country by name - Failed ${err}`);
+          console.error(`Get Country by Code cca3 - Failed ${err}`);
         },
       })
     );
