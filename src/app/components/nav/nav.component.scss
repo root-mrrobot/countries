@@ -32,6 +32,16 @@
     transition: 0.3s;
 }
 
+.mat-toolbar a[routerLink="landing"]:hover::after {
+    content: none; 
+    background-color: transparent; 
+    height: 0;
+}
+
+.mat-toolbar a[routerLink="landing"]:hover {
+    transform: scale(1.05);
+}
+
 .mat-toolbar .title {
     border: none;
     background-color: transparent;
