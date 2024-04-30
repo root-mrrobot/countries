@@ -15,6 +15,10 @@ export interface Country {
         alt: string;
         png: string;
         svg: string;
+    }
+    coatOfArms: {
+        png: string;
+        svg: string;
     }      
     government: string;
     languages: { [key: string]: string };
