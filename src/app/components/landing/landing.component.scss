@@ -5,7 +5,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0.8; /* Reduce opacity for better visibility */
+    opacity: 0.8; 
     z-index: -1;
     transition: opacity 0.5s ease;
 }
@@ -14,57 +14,55 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    // height: 100vh;
     padding-top: 64px;
 }
 
 .login-form-container {
     width: 260px;
     padding: 20px;
-    background-color: rgba(255, 255, 255, 0.7); /* Adjust transparency */
+    background-color: rgba(255, 255, 255, 0.7); 
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px); /* Glass texture effect */
-    margin-top: 50px; /* Move the form up */
-    margin-right: 100px; /* Move the form to the left */
-    position: relative; /* Set position to relative */
+    backdrop-filter: blur(10px); 
+    margin-top: 50px; 
+    margin-right: 100px; 
+    position: relative; 
 }
 
 .form-group {
     width: 100%;
-    margin-bottom: 20px; /* Increase spacing between form elements */
+    margin-bottom: 20px; 
 }
 
 button[type="submit"] {
-    width: 100%; /* Make the button full width */
+    width: 100%; 
 }
 
-/* Existing styles */
 .login-form-title {
     text-align: center;
-    margin-bottom: 20px; /* Add spacing below the title */
+    margin-bottom: 20px; 
 }
 
 .forgot-password {
-    text-align: right; /* Align "Forgot Password" link to the right */
-    // margin-top: 20px; /* Add margin from the top */
-    margin-bottom: 30px; /* Add margin from the bottom */
+    text-align: right; 
+    // margin-top: 20px; 
+    margin-bottom: 30px; 
 }
 
 .forgot-password a {
-    color: #666; /* Change link color */
-    text-decoration: none; /* Remove underline */
+    color: #666; 
+    text-decoration: none; 
 }
 
 .forgot-password a:hover {
-    text-decoration: underline; /* Add underline on hover */
+    text-decoration: underline; 
 }
 
 .error-message {
-    color: #ff4d4f; /* Text color */
-    padding: 10px 20px; /* Padding */
-    border-radius: 5px; /* Rounded corners */
-    margin-bottom: 10px; /* Add margin from the bottom */
-    font-size: 14px; /* Font size */
-    text-align: center; /* Center the text */
+    color: #ff4d4f; 
+    padding: 10px 20px; 
+    border-radius: 5px; 
+    margin-bottom: 10px;
+    font-size: 14px; 
+    text-align: center; 
   }
