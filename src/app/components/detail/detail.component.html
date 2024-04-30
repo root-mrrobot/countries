@@ -1,24 +1,31 @@
+<div *ngIf="loading" class="loading-container">
+  <mat-progress-spinner *ngIf="loading" mode="indeterminate" class="loading-spinner"></mat-progress-spinner>
+  <p class="loading-text">{{loadingText}}</p>
+</div>
 <div *ngIf="country">
   <button mat-icon-button class="back-button" (click)="goBack()" matTooltip="Countries">
     <mat-icon>arrow_back</mat-icon>
   </button>
-  <h1 class="country-name">{{ country.name.common }}</h1>
+  <div class="name-and-arms">
+    <h1 class="country-name" matTooltip="Country Name">{{ country.name.common }}</h1>
+    <img *ngIf="country.coatOfArms" [src]="country.coatOfArms.svg" class="coa-img" matTooltip="Coat of Arms"/>
+  </div>
   <div class="country-details">
     <div class="flag-section">
-      <img *ngIf="country.flags && country.flags.svg" [src]="country.flags.svg" class="img"/>
+      <img *ngIf="country.flags && country.flags.svg" [src]="country.flags.svg" class="flag-img" matTooltip="Flag"/>
     </div>
     <div class="info-section">
-      <p><strong>Population: </strong>{{ country.population | number }}</p>
-      <p><strong>Region: </strong>{{ country.region }}</p>
-      <p><strong>Sub Region: </strong>{{ country.subregion }}</p>
-      <p><strong>Capital: </strong>{{ country.capital }}</p>
-      <p><strong>Area: </strong>{{ country.area }} km<sup>2</sup></p>
+      <p *ngIf="country.population"><strong>Population: </strong>{{ country.population | number }}</p>
+      <p *ngIf="country.region"><strong>Region: </strong>{{ country.region }}</p>
+      <p *ngIf="country.subregion"><strong>Sub Region: </strong>{{ country.subregion }}</p>
+      <p *ngIf="country.capital"><strong>Capital: </strong>{{ country.capital }}</p>
+      <p *ngIf="country.area"><strong>Area: </strong>{{ country.area }} km<sup>2</sup></p>
       <p *ngIf="country.demonyms['eng'].m"><strong>Demonyms: </strong>{{ country.demonyms['eng'].m }}</p>
-      <p><strong>Coordinates: </strong>
+      <p *ngIf="country.latlng"><strong>Coordinates: </strong>
         {{ country.latlng[0] % 1 !== 0 ? (country.latlng[0] | number: '1.2-2') : country.latlng[0] }}&deg;,
         {{ country.latlng[1] % 1 !== 0 ? (country.latlng[1] | number: '1.2-2') : country.latlng[1] }}&deg;
       </p>     
-      <p><strong>Timezone: </strong>{{ country.timezones[0] }}</p>
+      <p *ngIf="country.timezones[0]"><strong>Timezone: </strong>{{ country.timezones[0] }}</p>
       <p *ngIf="country.flags.alt"><strong>Flag Description: </strong>{{ country.flags.alt }}</p>
     </div>
   </div>

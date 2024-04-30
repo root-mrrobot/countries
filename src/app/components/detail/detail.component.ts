@@ -10,6 +10,8 @@ import { Country } from '../../models/country';
 })
 export class DetailComponent implements OnInit {
   country: Country | undefined;
+  loading: boolean = true;
+  loadingText: string = 'Loading data... ';
 
   constructor(
     private route: ActivatedRoute, 
@@ -24,6 +26,7 @@ export class DetailComponent implements OnInit {
         if (countryData && countryData.length > 0) {
           this.country = countryData[0];
         }
+      this.loading = false;
       });
     });
   }

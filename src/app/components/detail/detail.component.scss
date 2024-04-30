@@ -1,39 +1,49 @@
 .country-details-container {
   position: relative;
-  margin-top: 60px; 
+  margin-top: 60px;
 }
 
-.img {
+.flag-img, .coa-img {
   max-width: 100%;
-  height: auto; 
+  height: auto;
 }
 
 .country-name {
   margin-top: 70px;
-  margin-left: 170px;
+  margin-left: 70px; 
+}
+
+.name-and-arms {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  // margin-left: 20px;
+}
+
+.coa-img {
+  width: 40px; 
+  height: auto;
+  margin-left: 20px; 
+  margin-top: 50px;
 }
 
 .country-details {
   display: flex;
-  flex-wrap: wrap; 
-  margin-top: 20px; 
+  flex-wrap: wrap;
+  // margin-top: 20px;
+  // margin-left: 20px; 
 }
 
 .flag-section {
   flex: 0 0 auto;
   width: 40%;
-  margin-left: 150px; 
-  margin-right: 20px; 
+  margin-right: 20px;
+  margin-left: 50px;
 }
 
 .info-section {
   flex: 1;
-  padding-left: 20px; 
-}
-
-.flag-img {
-  width: 100%;
-  height: auto;
+  padding-left: 20px;
 }
 
 .back-button {
@@ -41,4 +51,29 @@
   top: 80px;
   left: 20px;
   color: #333;
+}
+
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.loading-text {
+  margin-top: 180px; 
+  font-size: 17px;
+}
+
+.loading-spinner {
+  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
