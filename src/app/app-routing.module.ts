@@ -10,7 +10,7 @@ const routes: Routes = [
   {path: '', redirectTo: 'landing', pathMatch: 'full'},
   {path: 'landing', component: LandingComponent},
   {path: 'countries', component: CountriesComponent, canActivate: [AuthGuard]},
-  {path: 'country/:cca3', component: DetailComponent},
+  {path: 'country/:cca3', component: DetailComponent, canActivate: [AuthGuard]},
   {path: 'about', component: AboutComponent}
 ];
 
